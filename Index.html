@@ -3,140 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Nafi'atunnisa'</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Nafi'atunnisa' Portofolio</title>
+    <link rel="icon" href="favicon.png" type="image/png">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            background-color: #EDE7F6;
+            color: #2C1B5E;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            overflow-x: hidden;
         }
         header {
-            background-color: #4fa3f7;
-            padding: 20px 0;
+            background-color: #6A3FA0;
+            padding: 30px 20px;
             text-align: center;
-            color: white;
+            color: #FFFFFF;
+            position: relative;
+            z-index: 10;
         }
         header h1 {
+            font-size: 2.5em;
             margin: 0;
-            font-size: 36px;
         }
-        nav {
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             display: flex;
             justify-content: center;
-            background-color: #333;
-            padding: 10px 0;
         }
-        nav a {
-            color: white;
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #FFFFFF;
             text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
         }
-        nav a:hover {
-            border-bottom: 2px solid white;
+        nav ul li a:hover {
+            color: #F1E6FF;
         }
         section {
             padding: 60px 20px;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .card {
-            background: white;
-            padding: 30px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        h2 {
+            color: #6A3FA0;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.5s;
         }
-        .card h2 {
-            margin-top: 0;
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #2C1B5E;
         }
-        .card ul {
-            padding-left: 20px;
-        }
-        .card ul li {
-            list-style-type: square;
-        }
-        .contact-info {
+        .project-list {
             display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
             justify-content: center;
-            margin-top: 20px;
         }
-        .contact-info a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #4fa3f7;
-            font-size: 24px;
+        .project {
+            background-color: #6A3FA0;
+            padding: 20px;
+            border-radius: 10px;
+            width: calc(50% - 20px);
+            box-sizing: border-box;
+            color: #FFFFFF;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .contact-info a:hover {
-            color: #333;
+        .project:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .project h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .project p {
+            font-size: 1em;
+        }
+        form {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #6A3FA0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 1s;
+        }
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #6A3FA0;
+        }
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #6A3FA0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1.1em;
+            transition: border-color 0.3s ease;
+        }
+        form input:focus, form textarea:focus {
+            border-color: #542C85;
+        }
+        form button {
+            background-color: #6A3FA0;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 1.2em;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #542C85;
         }
         footer {
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
+            background-color: #6A3FA0;
+            color: #FFFFFF;
             text-align: center;
+            padding: 20px;
+            margin-top: 40px;
         }
-        footer p {
-            margin: 0;
+
+        /* Animasi Fade In */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
     <header>
-        <h1>Nafi'atunnisa' Portofolio</h1>
+        <h1>Nafi'atunnisa' Personal Space</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <!-- Navbar -->
-    <nav>
-        <a href="#about">Tentang Saya</a>
-        <a href="#skills">Keahlian</a>
-        <a href="#projects">Proyek</a>
-        <a href="#contact">Kontak</a>
-    </nav>
-
-    <!-- About Section -->
+    
     <section id="about">
-        <div class="card">
-            <h2>Tentang Saya</h2>
-            <p>Halo! Saya Nafi'atunnisa', seorang mahasiswi Psikologi yang memiliki minat besar dalam ilmu kesehatan mental. Saya juga menyukai dunia menulis dan coding. Saya memiliki keterampilan dalam menulis artikel SEO, copywriting, dan penulisan kreatif. Selain itu, saya mulai belajar HTML, CSS, dan JavaScript untuk memperluas pengetahuan saya dalam dunia digital.</p>
-        </div>
+        <h2>Tentang Saya</h2>
+        <p>Haii..., aku Nafi'atunnisa'👋. Aku suka nyebut diri sendiri sebagai Storyteller, bisa lewat cerpen, puisi, artikel, dan yang terakhir novel. 
+        Sekarang lagi kuliah di jurusan Psikologi, tapi di tengah jalan ketemu sama teknologi, jadi dikit-dikit bisa custom Blogger, Wordpress sampai dunia koding
+        (HTML-Javascript), kalau koding masih tipis si.🌱 I’m currently learning how to write a good article, and how to build a good website. 👀 Kalau untuk nulis udah
+          lama belajarnya, karena emang suka dari lama, jadi dikit-dikit bisa bantuin orang yang mager nulis.Tertarik kolaborasi?
+        </p>
     </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="card">
-            <h2>Keahlian</h2>
-            <ul>
-                <li>Menulis Artikel SEO</li>
-                <li>Copywriting untuk media sosial</li>
-                <li>Penulisan kreatif (cerpen, caption, dll)</li>
-                <li>Dasar-dasar HTML, CSS, dan JavaScript</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
+    
     <section id="projects">
-        <div class="card">
-            <h2>Proyek</h2>
-            <p>Berikut adalah beberapa proyek yang telah saya kerjakan:</p>
-            <ul>
-                <li><a href="https://peduliemosi.blogspot.com/">Website Pribadi</a></li>
-                <li><a href="https://harianejogja.com/8-rekomendasi-city-light-di-kota-jogja-cocok/">Portofolio Tulisan</a></li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="card">
-            <h2>Kontak</h2>
-            <p>Email: nafiamisra@gmail.com</p>
-            <div class="contact-info">
-                <a href="https://wa.link/v0hbok" target="_blank">WhatsApp</a>
-                <a href="mailto:nafiamisra@gmail.com" target="_blank">Email</a>
+        <h2>Proyek</h2>
+        <div class="project-list">
+            <div class="project">
+                <h3>Buat Blog Tema Psikologi</h3>
+                <p>Ya karena aku suka nulis dan suka belajar hal baru, jadinya aku kombinasiin buat bikin Blog, namanya Peduli Emosi.
+                Isi Blognya seputar tips kesehatan mental yang semoga bisa berguna buat orang-orang yang ngebacanya. Kamu juga boleh banget kalau mau berkunjung: https://peduliemosi.blogspot.com/</p>
+            </div>
+            <div class="project">
+                <h3>Nulis Artikel SEO berbagai topik</h3>
+                <p>Aku pernah ikut magang di beberapa tempat, jadi SEO Writer. Kalau di total kayaknya udah setahun lebih. Tapi nggak semua tempat magangku nyantumin nama di websitenya.
+                Tapi ada satu si yang nggak di hapus sampe sekarang: https://harianejogja.com/8-rekomendasi-city-light-di-kota-jogja-cocok/ </p>
             </div>
         </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Kontak</h2>
+        <form id="contact-form">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Pesan:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Kirim</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Nafi'atunnisa'. Semua hak cipta dilindungi.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Pesan Anda telah terkirim!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
