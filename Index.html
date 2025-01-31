@@ -1,227 +1,415 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nafi'atunnisa' Portofolio</title>
-    <link rel="icon" href="favicon.png" type="image/png">
+    <title>Portofolio Nafi'atunnisa'</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://www.example.com/path/to/icon.png" type="image/png">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            background-color: #EDE7F6;
-            color: #2C1B5E;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            background-color: #f9f9f9;
+            color: #333;
         }
+        /* Header */
         header {
-            background-color: #6A3FA0;
-            padding: 30px 20px;
-            text-align: center;
-            color: #FFFFFF;
             position: relative;
-            z-index: 10;
+            background: linear-gradient(135deg, #6A3FA0, #F1E6FF);
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            overflow: hidden;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
         }
         header h1 {
-            font-size: 2.5em;
-            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            transition: transform 0.5s ease;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        header p {
+            font-size: 1.3em;
+            transition: opacity 0.5s ease;
+        }
+        header:hover h1 {
+            transform: translateY(-20px);
+        }
+        header:hover p {
+            opacity: 0.8;
+        }
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1506784363803-82de5f4b599d'); /* Ganti dengan gambar sesuai pilihan */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        /* Navigasi */
+        nav {
             display: flex;
             justify-content: center;
+            gap: 20px;
+            background-color: #6A3FA0;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #FFFFFF;
+        nav a {
+            color: white;
             text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #F1E6FF;
+            color: #6A3FA0;
+        }
+        /* About Me */
+        #about {
+            padding: 60px 20px;
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+        }
+        #about h2 {
+            font-size: 2.5em;
             font-weight: bold;
+            color: #6A3FA0;
+        }
+        #about p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+            color: #333;
+            font-weight: 300;
+        }
+        #about img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            margin-top: 20px;
+            object-fit: cover;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 28px;
+            background-color: #6A3FA0;
+            color: white;
             font-size: 1.1em;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #502A80;
+            transform: translateY(-2px);
+        }
+        /* Portfolio */
+        #portfolio {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            width: 100%;
+            padding: 60px 20px;
+        }
+        #portfolio h2 {
+            font-size: 2.5em;
+            color: #6A3FA0;
+            margin-bottom: 40px;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .portfolio-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .portfolio-item h3 {
+            font-size: 2em;
+            color: #6A3FA0;
+            font-weight: bold;
+        }
+        .portfolio-item p {
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.5;
+        }
+        .portfolio-item a {
+            text-decoration: none;
+            color: #6A3FA0;
+            font-weight: bold;
             transition: color 0.3s ease;
         }
-        nav ul li a:hover {
-            color: #F1E6FF;
+        .portfolio-item a:hover {
+            color: #502A80;
         }
-        section {
-            padding: 60px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        h2 {
-            color: #6A3FA0;
-            font-size: 2em;
+        /* Contact Section */
+        #contact {
+            padding: 80px 20px;
+            background-color: #fff;
             text-align: center;
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s forwards 0.5s;
+            border: 2px solid #6A3FA0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 60px auto;
+            max-width: 600px;
         }
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #2C1B5E;
-        }
-        .project-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .project {
-            background-color: #6A3FA0;
-            padding: 20px;
-            border-radius: 10px;
-            width: calc(50% - 20px);
-            box-sizing: border-box;
-            color: #FFFFFF;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transform: scale(1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .project h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        .project p {
-            font-size: 1em;
-        }
-        form {
-            background-color: #FFFFFF;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #6A3FA0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s forwards 1s;
-        }
-        form label {
-            display: block;
-            margin-bottom: 10px;
+        #contact h2 {
+            font-size: 2.5em;
+            color: #6A3FA0;
             font-weight: bold;
-            color: #6A3FA0;
-        }
-        form input,
-        form textarea {
-            width: 100%;
-            padding: 12px;
             margin-bottom: 20px;
-            border: 1px solid #6A3FA0;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 1.1em;
-            transition: border-color 0.3s ease;
         }
-        form input:focus, form textarea:focus {
-            border-color: #542C85;
-        }
-        form button {
-            background-color: #6A3FA0;
-            color: #FFFFFF;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            border-radius: 6px;
+        #contact p {
             font-size: 1.2em;
-            width: 100%;
-            transition: background-color 0.3s ease;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
-        form button:hover {
-            background-color: #542C85;
-        }
-        footer {
+        #contact a {
+            display: inline-block;
+            padding: 14px 28px;
             background-color: #6A3FA0;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            color: white;
+            font-size: 1.1em;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        #contact a:hover {
+            background-color: #502A80;
+            transform: translateY(-2px);
         }
 
-        /* Animasi Fade In */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        /* Copywriting Section */
+        #copywriting {
+            padding: 80px 20px;
+            background-color: #F1E6FF;
+            text-align: center;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+        #copywriting h2 {
+            font-size: 2.5em;
+            color: #6A3FA0;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        #copywriting p {
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+            color: #333;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .button-copywriting {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: #6A3FA0;
+            color: white;
+            font-size: 1.1em;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .button-copywriting:hover {
+            background-color: #502A80;
+            transform: translateY(-2px);
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #6A3FA0;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .footer-content p {
+            font-size: 1.2em;
+            color: white;
+            margin: 0;
+        }
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3em;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            header p {
+                font-size: 1.1em;
+            }
+            nav a {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+            #about p {
+                font-size: 1.1em;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            #contact {
+                margin: 40px 20px;
+                padding: 60px 20px;
+            }
+            #contact h2 {
+                font-size: 2em;
+            }
+            #contact p {
+                font-size: 1em;
+            }
+            #copywriting h2 {
+                font-size: 2em;
+            }
+            #copywriting p {
+                font-size: 1.1em;
             }
         }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .button {
+                font-size: 1em;
+                padding: 12px 24px;
+            }
+            #about h2 {
+                font-size: 2em;
+            }
+            #about p {
+                font-size: 1.1em;
+            }
+            #portfolio h2 {
+                font-size: 2.2em;
+            }
+            .portfolio-item h3 {
+                font-size: 1.8em;
+            }
+            .portfolio-item p {
+                font-size: 1em;
+            }
+            #copywriting {
+                padding: 60px 20px;
+                margin-top: 30px;
+            }
+        }
+
     </style>
 </head>
 <body>
     <header>
-        <h1>Nafi'atunnisa' Personal Space</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#projects">Proyek</a></li>
-                <li><a href="#contact">Kontak</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <h1>Nafi'atunnisa' Personal Space</h1>
+            <p>Welcome to my portofolio! Explore my projects and get in touch.</p>
+        </div>
+        <div class="header-overlay"></div>
     </header>
-    
+    <nav>
+        <a href="#about">About</a>
+        <a href="#portofolio">Portofolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
     <section id="about">
-        <h2>Tentang Saya</h2>
-        <p>Haii..., aku Nafi'atunnisa'👋. Aku suka nyebut diri sendiri sebagai Storyteller, bisa lewat cerpen, puisi, artikel, dan yang terakhir novel. 
-        Sekarang lagi kuliah di jurusan Psikologi, tapi di tengah jalan ketemu sama teknologi, jadi dikit-dikit bisa custom Blogger, Wordpress sampai dunia koding
-        (HTML-Javascript), kalau koding masih tipis si.🌱 I’m currently learning how to write a good article, and how to build a good website. 👀 Kalau untuk nulis udah
-          lama belajarnya, karena emang suka dari lama, jadi dikit-dikit bisa bantuin orang yang mager nulis.Tertarik kolaborasi?
-        </p>
+        <h2>About Me</h2>
+        <p>Saya seorang Web Content Writer dan Storyteller yang menyukai dunia kepenulisan dari artikel SEO, cerpen, puisi, hingga novel. Punya latar belakang Psikologi membantu saya memahami lebih dalam karakter dan emosi manusia. Melalui tulisan, saya ingin menginspirasi dan berbagi wawasan dengan dunia. Mari berkolaborasi untuk menciptakan karya yang bermakna!</p>
+        <img src="https://images.pexels.com/photos/904616/pexels-photo-904616.jpeg" alt="White ceramic teacup with saucer near two books" />
+        <div class="button-container">
+            <a href="https://wa.link/v0hbok" class="button">Get In Touch With Me</a>
+        </div>
     </section>
-    
-    <section id="projects">
-        <h2>Proyek</h2>
-        <div class="project-list">
-            <div class="project">
-                <h3>Buat Blog Tema Psikologi</h3>
-                <p>Ya karena aku suka nulis dan suka belajar hal baru, jadinya aku kombinasiin buat bikin Blog, namanya Peduli Emosi.
-                Isi Blognya seputar tips kesehatan mental yang semoga bisa berguna buat orang-orang yang ngebacanya. Kamu juga boleh banget kalau mau berkunjung: https://peduliemosi.blogspot.com/</p>
+
+    <!-- Portofolio section -->
+    <section id="portfolio">
+        <h2>My Portofolio</h2>
+        <div class="portofolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1602926930607-6c19160d75d9" alt="Masagipedia" />
+                <h3>Jurnalis di Masagipedia</h3>
+                <p>Menulis artikel Berita dan informasi seputar Khazanah Islam. <a href="https://www.masagipedia.com/khazanah/31412995827/6-keutamaan-bulan-muharram-diantara-bulan-bulan-yang-lain">Baca selengkapnya</a></p>
             </div>
-            <div class="project">
-                <h3>Nulis Artikel SEO berbagai topik</h3>
-                <p>Aku pernah ikut magang di beberapa tempat, jadi SEO Writer. Kalau di total kayaknya udah setahun lebih. Tapi nggak semua tempat magangku nyantumin nama di websitenya.
-                Tapi ada satu si yang nggak di hapus sampe sekarang: https://harianejogja.com/8-rekomendasi-city-light-di-kota-jogja-cocok/ </p>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1555473104-39d94e6e5bc6" alt="Peduli Emosi Blog" />
+                <h3>Blog Tema Psikologi</h3>
+                <p>Buat blog Peduli Emosi, yang berfokus pada tips kesehatan mental. <a href="https://peduliemosi.blogspot.com/">Peduli Emosi</a></p>
+            </div>
+            <div class="portofolio-item">
+                <img src="https://images.unsplash.com/photo-1590401154265-2c44d9c24c1b" alt="Hariane Jogja" />
+                <h3>Artikel SEO - Hariane Jogja</h3>
+                <p>Menulis artikel SEO untuk berbagai topik. Salah satu contoh artikel bisa dibaca di <a href="https://harianejogja.com/kolom/berita-covid-19">Artikel Hariane</a></p>
             </div>
         </div>
     </section>
-    
-    <section id="contact">
-        <h2>Kontak</h2>
-        <form id="contact-form">
-            <label for="name">Nama:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Pesan:</label>
-            <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit">Kirim</button>
-        </form>
-    </section>
-    
-    <footer>
-        <p>&copy; 2025 Nafi'atunnisa'. Semua hak cipta dilindungi.</p>
-    </footer>
 
-    <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Pesan Anda telah terkirim!');
-            this.reset();
-        });
-    </script>
+    <!-- Copywriting Section -->
+    <section id="copywriting">
+        <h2>Copywriting Services</h2>
+        <p>Saya menawarkan jasa penulisan konten berkualitas, baik itu untuk kebutuhan SEO, artikel blog, hingga penulisan materi pemasaran. Dengan pengalaman dan keterampilan yang saya miliki, saya siap membantu bisnis Anda berkembang melalui tulisan yang menarik dan efektif.</p>
+        <a href="https://wa.link/v0hbok" class="button-copywriting">Get My Services</a>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>If you are interested to collaborate or need more information about my services, feel free to reach out to me!</p>
+        <a href="https://wa.link/v0hbok">Connect on WhatsApp</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Nafi'atunnisa' - All Rights Reserved</p>
+        </div>
+    </footer>
 </body>
 </html>
